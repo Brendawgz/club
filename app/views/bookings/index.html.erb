@@ -1,0 +1,29 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 page-title">
+                <h1 class="page-title-text">My Bookings</h1>
+            </div>
+        </div>
+        <% @bookings.each do |booking| %>
+        <div class="row">
+            <div class="col-md-12 page-text">
+                <h2 class="event-title"><%= link_to booking.events.first.name, event_path(booking.events.first.id), class:"event-title" %></h2>
+                Date: <%= booking.events.first.date %> <br>
+                Capacity: <%= booking.events.first.capacity %> <br>
+                Theme: <%= booking.events.first.theme %> <br>
+                Name: <%= booking.name %> <br>
+                Guests: <%= booking.guests %> <br>
+                Cost: $<%= booking.cost %> <br>
+                <% if logged_in? or (logged_in? and current_user.admin?) %>
+                    <div class="event-actions">
+                        <%= button_to "Delete Booking", booking_path(booking), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger btn-large edit-button event-button" %>
+                        <%= button_to "Edit Booking", edit_booking_path(booking), method: :get, class:"btn btn-primary btn-large edit-button event-button" %>
+                        <%= button_to "View Booking", booking_path(booking), method: :get, class:"btn btn-primary btn-large edit-button event-button" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

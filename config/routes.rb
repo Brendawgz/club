@@ -8,12 +8,23 @@ Rails.application.routes.draw do
   # Example of regular route:
   get 'dress-code', to: 'pages#dresscode'
   get 'the-venue', to: 'pages#venue'
-
+  get 'upcoming-events', to: 'pages#upcoming'
+  get 'function-spaces', to: 'pages#spaces'
+  get 'find-us', to: 'pages#find'
+  get 'contact-us', to: 'pages#contact'
+  
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  get 'past-events', to: 'events#past'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :users
+  resources :bookings
+  resources :events
+  
 
   # Example resource route with options:
   #   resources :products do

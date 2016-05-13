@@ -7,8 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'shared/navigation' %>
+<%= render 'layouts/navigation' %>
 <%= yield %>
+<%= debug(params) if Rails.env.development? %>
 
 </body>
 </html>

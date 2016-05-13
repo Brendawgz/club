@@ -1,0 +1,29 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 page-title">
+                <h1 class="page-title-text">Upcoming Events</h1></h1>
+            </div>
+        </div>
+        <% @events.each do |event| %>
+            <% if !event.past %>
+                <div class="row">
+                    <div class="col-md-12 page-text">
+                        <h2 class="event-title"><%= link_to event.name, event_path(event), class:"event-title" %></h2>
+                        Date: <%= event.date %> <br>
+                        Capacity: <%= event.capacity %> <br>
+                        Theme: <%= event.theme %>
+                        <% if logged_in? and current_user.admin? %>
+                            <div class="event-actions">
+                                <%= button_to "Delete Event", event_path(event), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger btn-large edit-button event-button" %>
+                                <%= button_to "Edit Event", edit_event_path(event), method: :get, class:"btn btn-primary btn-large edit-button event-button" %>
+                                <%= button_to "View Event", event_path(event), method: :get, class:"btn btn-primary btn-large edit-button event-button" %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>
+        
