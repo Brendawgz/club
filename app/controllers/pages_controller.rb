@@ -10,10 +10,6 @@ class PagesController < ApplicationController
     def dresscode
         
     end
-    
-    def upcoming
-        
-    end
  
     def spaces
         
