@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   # Example of regular route:
   get 'dress-code', to: 'pages#dresscode'
   get 'the-venue', to: 'pages#venue'
-  get 'upcoming-events', to: 'pages#upcoming'
-  get 'function-spaces', to: 'pages#spaces'
   get 'find-us', to: 'pages#find'
   get 'contact-us', to: 'pages#contact'
   

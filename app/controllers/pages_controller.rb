@@ -10,11 +10,7 @@ class PagesController < ApplicationController
     def dresscode
         
     end
- 
-    def spaces
-        
-    end
-    
+
     def find
         
     end
