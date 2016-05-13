@@ -79,8 +79,11 @@ $navbar-default-bg: black;
     float:left;
 }
 
-
-.event-button {
+.edit-button {
+    float:right;
+    background: none !important;
+    position:relative;
+    bottom:-10px;
     margin-right:10px;
 }
 
@@ -94,7 +97,7 @@ $navbar-default-bg: black;
     background: none;
 }
 
-.buttons {
+.submit-buttons {
     color:white;
     font-size:14px;
     text-decoration: none !important;
@@ -103,11 +106,13 @@ $navbar-default-bg: black;
 
 .cancel-button {
     position:relative;
-    left:-10px;
+    left:-4px;
+    bottom:-10px;
     background: none !important;
 }
 
-.edit-button {
-    float:right;
+.cancel-button-form {
+    position:relative;
+    left:-10px;
     background: none !important;
 }

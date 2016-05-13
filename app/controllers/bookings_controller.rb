@@ -6,6 +6,11 @@ class BookingsController < ApplicationController
     def index
         @bookings = Booking.all
     end
+    
+    def list
+        @user = current_user
+        @bookings = @user.bookings
+    end
         
     def new
         @booking = Booking.new
@@ -19,8 +24,7 @@ class BookingsController < ApplicationController
         @booking.cost = @booking.guests * 50
         @booking.events << Event.find(params[:booking][:event_ids])
         if @booking.save
-            flash[:success] = "You've successfully created a booking"
-            redirect_to bookings_path
+            redirect_to list_bookings_path
         else
             render 'new'
         end
@@ -34,8 +38,7 @@ class BookingsController < ApplicationController
         if @booking.update(booking_params)
             @booking.cost = @booking.guests * 50
             @booking.update(booking_params)
-            flash[:success] = "You've successfully edited your booking"
-            redirect_to bookings_path
+            redirect_to list_bookings_path
         else
             render 'edit'
         end
@@ -47,8 +50,7 @@ class BookingsController < ApplicationController
     
     def destroy
         @booking.destroy
-        redirect_to bookings_path
-        flash[:danger] = "Event has been successfully cancelled"
+        redirect_to list_bookings_path
     end
     
     private
@@ -62,7 +64,6 @@ class BookingsController < ApplicationController
     
     def require_same_user
       if current_user != @booking.user and !current_user.admin?
-        flash[:danger] = 'You can only edit or delete your own bookings'
         redirect_to root_path
       end
     end

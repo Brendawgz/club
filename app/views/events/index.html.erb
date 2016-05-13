@@ -9,10 +9,12 @@
             <% if !event.past %>
                 <div class="row">
                     <div class="col-md-12 page-text">
-                        <h2 class="event-title"><%= link_to event.name, event_path(event), class:"event-title" %></h2>
-                        Date: <%= event.date %> <br>
-                        Capacity: <%= event.capacity %> <br>
-                        Theme: <%= event.theme %>
+                        <h2 class="event-title"><%= link_to event.name, event_path(event)%> </h2>
+                        <p>
+                            Date: <%= event.date %> <br>
+                            Capacity: <%= event.capacity %> <br>
+                            Theme: <%= event.theme %>
+                        </p>
                         <% if logged_in? and current_user.admin? %>
                             <div class="event-actions">
                                 <%= button_to "Delete Event", event_path(event), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger btn-large edit-button event-button" %>

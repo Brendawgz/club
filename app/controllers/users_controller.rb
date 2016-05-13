@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:edit, :update, :show]
+    before_action :set_user, only: [:edit, :update, :show, :destroy]
     before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def index
@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         if @user.save
-            flash[:success] = "Welcome to Alpha Club #{@user.username}"
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
@@ -27,7 +26,6 @@ class UsersController < ApplicationController
     
     def update
         if @user.update(user_params)
-        flash[:success] = "Your profile has been updated sucessfully"
          redirect_to user_path(@user)
         else
          render 'edit'
@@ -39,10 +37,12 @@ class UsersController < ApplicationController
     end
     
     def destroy
-        @user = User.find(params[:id])
         @user.destroy
-        flash[:danger] = "User and all of user's bookings have been deleted"
-        redirect_to root_path
+        if current_user.admin?
+            redirect_to users_path
+        else
+            redirect_to root_path
+        end
     end
     
     private
@@ -56,7 +56,6 @@ class UsersController < ApplicationController
     
         def require_same_user
             if current_user != @user and !current_user.admin?
-                flash[:danger] = 'You can only edit your own account'
                 redirect_to root_path
             end
         end

@@ -17,7 +17,6 @@ class EventsController < ApplicationController
     def create
         @event = Event.create(event_params)
         if @event.save
-            flash[:success] = "You've successfully created an event"
             redirect_to events_path
         else
             render 'new'
@@ -30,7 +29,6 @@ class EventsController < ApplicationController
     
     def update
         if @event.update(event_params)
-            flash[:success] = "Event updated"
             redirect_to events_path
         else
             render 'edit'
@@ -49,7 +47,6 @@ class EventsController < ApplicationController
             @event.destroy
             redirect_to events_path
         end
-        flash[:danger] = "Event has been successfully cancelled"
     end
     
     private
@@ -63,7 +60,6 @@ class EventsController < ApplicationController
     
     def require_admin
        if !logged_in? || (logged_in? and !current_user.admin?)
-           flash[:danger] = "Only admins can perform that action"
            redirect_to events_path
        end
     end

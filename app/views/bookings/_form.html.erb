@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-xs-12">
     <%= form_for(@booking, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <% @booking.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+    
     <div class="form-group">
       <div class="control-label col-sm-2">
         <%= f.label :name %>
@@ -32,13 +36,13 @@
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <%= f.submit(@booking.new_record? ?  "Make Booking" : "Save Changes", class: "btn btn-primary btn-large buttons") %>
+          <%= f.submit(@booking.new_record? ?  "Make Booking" : "Save Changes", class: "btn btn-primary btn-large submit-buttons") %>
         </div>
       </div>
     <% end %>
     
     <div class="col-sm-offset-2 col-sm-10 ">
-      <%= link_to "Cancel", request.referer.present? ? request.referer : root_path, class:"btn btn-primary btn-large cancel-button" %>
+      <%= link_to "Back", request.referer.present? ? request.referer : root_path, class:"btn btn-primary btn-large cancel-button-form" %>
     </div>
   </div>
 </div>
