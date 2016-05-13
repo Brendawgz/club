@@ -8,10 +8,10 @@
         <% @bookings.each do |booking| %>
         <div class="row">
             <div class="col-md-12 page-text">
-                <h2 class="event-title"><%= link_to booking.events.first.name, event_path(booking.events.first.id), class:"event-title" %></h2>
-                Date: <%= booking.events.first.date %> <br>
-                Capacity: <%= booking.events.first.capacity %> <br>
-                Theme: <%= booking.events.first.theme %> <br>
+                <h2 class="event-title"><%= link_to booking.event.name, event_path(booking.event.id), class:"event-title" %></h2>
+                Date: <%= booking.event.date %> <br>
+                Capacity: <%= booking.event.capacity %> <br>
+                Theme: <%= booking.event.theme %> <br>
                 Name: <%= booking.name %> <br>
                 Guests: <%= booking.guests %> <br>
                 Cost: $<%= booking.cost %> <br>

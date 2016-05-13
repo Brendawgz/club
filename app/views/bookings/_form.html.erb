@@ -29,7 +29,7 @@
         <%= f.label :events %>
       </div>
       <div class="col-sm-8">
-        <%= f.collection_select :event_ids, @events, :id, :name, {}, { :class => 'form-options' } %>
+        <%= f.collection_select :event_id, @events, :id, :name, {}, { :class => 'form-options' } %>
       </div>
     </div>
     <% end %>

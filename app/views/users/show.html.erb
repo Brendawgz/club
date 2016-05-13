@@ -13,7 +13,7 @@
                     Email: <%= @user.email %> <br>
                     Number of Bookings: <%= @user.bookings.count %> Bookings
                     <div class="event-actions">
-                        <%= button_to "View Your Bookings", bookings_path, method: :get, class:"btn btn-primary btn-large edit-button event-button" %>
+                        <%= button_to "View Your Bookings", list_bookings_path, method: :get, class:"btn btn-primary btn-large edit-button event-button" %>
                     </div>
                 </p>
             </div>

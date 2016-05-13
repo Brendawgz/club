@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513042342) do
+ActiveRecord::Schema.define(version: 20160513211235) do
 
   create_table "bookings", force: :cascade do |t|
     t.decimal  "cost"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160513042342) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "event_id"
   end
 
   create_table "event_bookings", force: :cascade do |t|

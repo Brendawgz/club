@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
         @booking.user = current_user
         @booking.payment = false
         @booking.cost = @booking.guests * 50
-        @booking.events << Event.find(params[:booking][:event_ids])
+        @booking.event = Event.find(booking_params[:event_id])
         if @booking.save
             redirect_to list_bookings_path
         else
@@ -55,7 +55,7 @@ class BookingsController < ApplicationController
     
     private
     def booking_params
-      params.require(:booking).permit(:cost, :payment, :guests, :name, event_ids: [:id])
+      params.require(:booking).permit(:cost, :payment, :guests, :name, :event_id)
     end
     
     def set_booking
