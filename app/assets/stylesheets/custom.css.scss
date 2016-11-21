@@ -1,0 +1,118 @@
+$navbar-default-bg: black;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar {
+    border-radius: 0px;
+    margin-bottom:0px;
+    font-size: 1.6em;
+}
+
+.navbar-brand {
+    position:relative;
+    right:-10px;
+    bottom: 10px;
+}
+
+.navbar-left {
+    position:relative;
+    right:-40px;
+}
+
+.navbar-right {
+    position:relative;
+    left:-20px;
+}
+
+.jumbotron {
+  background-size: cover;
+  min-height: 947px;
+  margin:0px;
+  background-image: asset-url("nightclub_seating.jpg");
+}
+
+.page-title {
+    color:white;
+    background-color:black;
+    padding: 15px;
+    background: rgb(54, 25, 25); 
+    background: rgba(54, 25, 25, .8); 
+}
+
+.page-title-text {
+    position:relative;
+    left:20px;
+}
+
+.page-text {
+    color:white;
+    background-color:black;
+    margin-top: 10px;
+    padding: 45px;
+    background: rgb(54, 25, 25); 
+    background: rgba(54, 25, 25, .8); 
+}
+
+.page-list {
+    font-size:1.6em;
+}
+
+.page-small {
+    font-style:italic;
+}
+
+.event-title {
+    margin-top:0px;
+}
+
+.event-title a {
+    color:white;
+}
+
+.event-actions {
+    border-top: 1px solid #eaeaea;
+    padding-top:5px;
+}
+
+.event-actions-left {
+    float:left;
+}
+
+.edit-button {
+    float:right;
+    background: none !important;
+    position:relative;
+    bottom:-10px;
+    margin-right:10px;
+}
+
+.form-control {
+    background: none;
+    color:white;
+}
+
+.form-options {
+    height:30px;
+    background: none;
+}
+
+.submit-buttons {
+    color:white;
+    font-size:14px;
+    text-decoration: none !important;
+    background: none !important;
+}
+
+.cancel-button {
+    position:relative;
+    left:-4px;
+    bottom:-10px;
+    background: none !important;
+}
+
+.cancel-button-form {
+    position:relative;
+    left:-10px;
+    background: none !important;
+}

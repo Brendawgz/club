@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
   <title>Workspace</title>
+=======
+  <title>Alpha</title>
+>>>>>>> 72b7ab20a45b613381c0f4ce5866da23ca6e351b
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<<<<<<< HEAD
 
 <%= yield %>
+=======
+<%= render 'layouts/navigation' %>
+<%= yield %>
+<%= debug(params) if Rails.env.development? %>
+>>>>>>> 72b7ab20a45b613381c0f4ce5866da23ca6e351b
 
 </body>
 </html>

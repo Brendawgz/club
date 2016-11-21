@@ -1,0 +1,29 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 page-title">
+                <h1 class="page-title-text">Your Booking</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 page-text">
+                <h2 class="event-title"><%= link_to @booking.event.name, event_path(@booking.event.id), class:"event-title" %></h2>
+                Date: <%= @booking.event.date %> <br>
+                Capacity: <%= @booking.event.capacity %> <br>
+                Theme: <%= @booking.event.theme %> <br>
+                Name: <%= @booking.name %> <br>
+                Guests: <%= @booking.guests %> <br>
+                Cost: $<%= @booking.cost %> <br>
+                <% if logged_in? or (logged_in? and current_user.admin?) %>
+                    <div class="event-actions">
+                        <%= button_to "Delete Booking", booking_path(@booking), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger btn-large edit-button event-button" %>
+                        <%= button_to "Edit Booking", edit_booking_path(@booking), method: :get, class:"btn btn-primary btn-large edit-button event-button" %>
+                    <div class="event-actions-left">
+                        <%= link_to "Back", request.referer.present? ? request.referer : default_path, class:"btn btn-primary btn-large cancel-button" %>
+                    </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

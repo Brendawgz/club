@@ -1,0 +1,90 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">
+        <%= link_to(image_tag("alpha.png"), root_path) %>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Venue <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'The Venue', the_venue_path %></li>
+            <li><%= link_to 'Dress Code', dress_code_path %></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Upcoming Events', events_path %></li>
+            <li><%= link_to 'Past Events', past_events_path %></li>
+            <% if logged_in? and current_user.admin? %>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to 'Create Event', new_event_path %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% if logged_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bookings <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'My Bookings', list_bookings_path %></li>
+            <li><%= link_to 'Make a Booking', new_booking_path %></li>
+            <% if logged_in? and current_user.admin? %>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to 'View All Bookings', bookings_path %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% else %>
+          <li>
+            <%= link_to 'Bookings', login_path %>
+          </li>
+        <% end %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Contact us', contact_us_path %></li>
+            <li><%= link_to 'Find us', find_us_path %></li>
+          </ul>
+        </li>
+        <% if logged_in? and current_user.admin? %>
+          <li>
+            <%= link_to 'Users', users_path %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if !logged_in? %>
+        <li>
+          <%= link_to 'Log In', login_path %>
+        </li>
+        <li>
+          <%= link_to 'Sign Up', new_user_path %>
+        </li>
+        <% else %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'View Your Profile', user_path(current_user) %></li>
+            <li><%= link_to 'Edit Your Profile', edit_user_path(current_user) %></li>
+          </ul>
+        </li>
+        <li>
+          <%= link_to 'Log Out', logout_path, method: :delete  %>
+        </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
